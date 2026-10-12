@@ -41,7 +41,7 @@ def run_preprocessing_pipeline(input_path, output_path):
     print(f"[SUKSES] Dataset siap latih disimpan di: {output_path}")
 
 if __name__ == "__main__":
-    RAW_DATA_PATH = "heart-disease-dataset_raw/heart.csv"
+    RAW_DATA_PATH = "namadataset_raw/heart.csv"
     PROCESSED_DATA_PATH = "preprocessing/heart-disease-dataset_preprocessing/heart_ready.csv"
     
     run_preprocessing_pipeline(RAW_DATA_PATH, PROCESSED_DATA_PATH)
