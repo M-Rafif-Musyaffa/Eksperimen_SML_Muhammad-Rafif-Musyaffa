@@ -1,1 +1,36 @@
+name: Data Preprocessing Automation
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas scikit-learn
+
+    - name: Run Preprocessing Script
+      run: |
+        python preprocessing/automate_Muhammad_Rafif_Musyaffa.py
+
+    - name: Commit and Push Processed Data
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        git add preprocessing/heart-disease-dataset_preprocessing/heart_ready.csv
+        git commit -m "Auto-update processed dataset" || echo "No changes to commit"
+        git push
